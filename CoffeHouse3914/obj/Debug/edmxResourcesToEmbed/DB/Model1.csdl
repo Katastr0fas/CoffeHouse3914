@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KoffeeHouseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="UDF_GetLevelGuest_Result">
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Номер_телефона" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Пол" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Дата_рождения" Type="DateTime" />
+    <Property Name="Электронная_почта" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Уровень_скидки" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Достуаные_баллы" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UDF_SupplyDate_Result">
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Цена" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Категория" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Срок_годности" Type="Int32" />
+    <Property Name="Дата_поставки" Type="DateTime" Nullable="false" />
+    <Property Name="Количество_товара_в_поставке" Type="Int32" Nullable="false" />
+    <Property Name="Поставщик" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="IDCategory" />
+    </Key>
+    <Property Name="IDCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Stuff" Relationship="Self.FK_Stuff_Category" FromRole="Category" ToRole="Stuff" />
+  </EntityType>
+  <EntityType Name="Check">
+    <Key>
+      <PropertyRef Name="IDCheck" />
+    </Key>
+    <Property Name="IDCheck" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDEmployee" Type="Int32" Nullable="false" />
+    <Property Name="IDGuest" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Emploee" Relationship="Self.FK_Check_Emploee" FromRole="Check" ToRole="Emploee" />
+    <NavigationProperty Name="Guest" Relationship="Self.FK_Check_Guest" FromRole="Check" ToRole="Guest" />
+    <NavigationProperty Name="StuffList" Relationship="Self.FK_StuffList_Check" FromRole="Check" ToRole="StuffList" />
+  </EntityType>
+  <EntityType Name="Emploee">
+    <Key>
+      <PropertyRef Name="IDEmploee" />
+    </Key>
+    <Property Name="IDEmploee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IDGender" Type="Int32" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PersonalCode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDPost" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Check" Relationship="Self.FK_Check_Emploee" FromRole="Emploee" ToRole="Check" />
+    <NavigationProperty Name="Gender" Relationship="Self.FK_Emploee_Gender" FromRole="Emploee" ToRole="Gender" />
+    <NavigationProperty Name="Post" Relationship="Self.FK_Emploee_Post" FromRole="Emploee" ToRole="Post" />
+    <NavigationProperty Name="WorkShift" Relationship="Self.EmloeeWorkShift" FromRole="Emploee" ToRole="WorkShift" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="IDGender" />
+    </Key>
+    <Property Name="IDGender" Type="Int32" Nullable="false" />
+    <Property Name="Gender1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Emploee" Relationship="Self.FK_Emploee_Gender" FromRole="Gender" ToRole="Emploee" />
+    <NavigationProperty Name="Guest" Relationship="Self.FK_Guest_Gender" FromRole="Gender" ToRole="Guest" />
+  </EntityType>
+  <EntityType Name="Guest">
+    <Key>
+      <PropertyRef Name="IDGuest" />
+    </Key>
+    <Property Name="IDGuest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDGender" Type="Int32" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiscountCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="IDLevelDiscount" Type="Int32" />
+    <Property Name="Score" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Check" Relationship="Self.FK_Check_Guest" FromRole="Guest" ToRole="Check" />
+    <NavigationProperty Name="Gender" Relationship="Self.FK_Guest_Gender" FromRole="Guest" ToRole="Gender" />
+    <NavigationProperty Name="LevelDiscount" Relationship="Self.FK_Guest_LevelDiscount" FromRole="Guest" ToRole="LevelDiscount" />
+  </EntityType>
+  <EntityType Name="LevelDiscount">
+    <Key>
+      <PropertyRef Name="IDLevelDiscount" />
+    </Key>
+    <Property Name="IDLevelDiscount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Value" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Guest" Relationship="Self.FK_Guest_LevelDiscount" FromRole="LevelDiscount" ToRole="Guest" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="IdPost" />
+    </Key>
+    <Property Name="IdPost" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Emploee" Relationship="Self.FK_Emploee_Post" FromRole="Post" ToRole="Emploee" />
+  </EntityType>
+  <EntityType Name="Stuff">
+    <Key>
+      <PropertyRef Name="IDStuff" />
+    </Key>
+    <Property Name="IDStuff" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDCategory" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <Property Name="ExpirationDate" Type="Int32" />
+    <Property Name="PhotoPath" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Stuff_Category" FromRole="Stuff" ToRole="Category" />
+    <NavigationProperty Name="StuffList" Relationship="Self.FK_StuffList_Stuff" FromRole="Stuff" ToRole="StuffList" />
+    <NavigationProperty Name="Supply" Relationship="Self.StuffSupply" FromRole="Stuff" ToRole="Supply" />
+  </EntityType>
+  <EntityType Name="StuffList">
+    <Key>
+      <PropertyRef Name="IDStuffList" />
+    </Key>
+    <Property Name="IDStuffList" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDStuff" Type="Int32" Nullable="false" />
+    <Property Name="IDCheck" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Check" Relationship="Self.FK_StuffList_Check" FromRole="StuffList" ToRole="Check" />
+    <NavigationProperty Name="Stuff" Relationship="Self.FK_StuffList_Stuff" FromRole="StuffList" ToRole="Stuff" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="IDSupplier" />
+    </Key>
+    <Property Name="IDSupplier" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_Supplier" FromRole="Supplier" ToRole="Supply" />
+  </EntityType>
+  <EntityType Name="Supply">
+    <Key>
+      <PropertyRef Name="IDSupply" />
+    </Key>
+    <Property Name="IDSupply" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="IDSupplier" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK_Supply_Supplier" FromRole="Supply" ToRole="Supplier" />
+    <NavigationProperty Name="Stuff" Relationship="Self.StuffSupply" FromRole="Supply" ToRole="Stuff" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="WorkShift">
+    <Key>
+      <PropertyRef Name="WorkShift1" />
+    </Key>
+    <Property Name="WorkShift1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Emploee" Relationship="Self.EmloeeWorkShift" FromRole="WorkShift" ToRole="Emploee" />
+  </EntityType>
+  <EntityType Name="VW_LevelDiscountGuest">
+    <Key>
+      <PropertyRef Name="Имя" />
+      <PropertyRef Name="Телефон" />
+      <PropertyRef Name="Пол" />
+      <PropertyRef Name="Скидочный_код" />
+      <PropertyRef Name="Баланс_балов" />
+      <PropertyRef Name="Уровень_скидки" />
+    </Key>
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Телефон" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Пол" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Дата_рождения" Type="DateTime" Precision="0" />
+    <Property Name="Почта" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Скидочный_код" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Баланс_балов" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Уровень_скидки" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VW_TheBiggestGuest">
+    <Key>
+      <PropertyRef Name="Имя" />
+      <PropertyRef Name="Телефон" />
+      <PropertyRef Name="Уровень_скидки" />
+      <PropertyRef Name="Доступные_баллы" />
+    </Key>
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Телефон" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Уровень_скидки" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Доступные_баллы" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Количество_заказов" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VW_WorkShiftEmploee">
+    <Key>
+      <PropertyRef Name="ФИО" />
+      <PropertyRef Name="Персональный_код" />
+      <PropertyRef Name="Начало_смены" />
+      <PropertyRef Name="Конец_смены" />
+    </Key>
+    <Property Name="ФИО" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Персональный_код" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Начало_смены" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Конец_смены" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Количество_часов" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_Stuff_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Stuff" Type="Self.Stuff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="IDCategory" />
+      </Principal>
+      <Dependent Role="Stuff">
+        <PropertyRef Name="IDCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Check_Emploee">
+    <End Role="Emploee" Type="Self.Emploee" Multiplicity="1" />
+    <End Role="Check" Type="Self.Check" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emploee">
+        <PropertyRef Name="IDEmploee" />
+      </Principal>
+      <Dependent Role="Check">
+        <PropertyRef Name="IDEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Check_Guest">
+    <End Role="Guest" Type="Self.Guest" Multiplicity="0..1" />
+    <End Role="Check" Type="Self.Check" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Guest">
+        <PropertyRef Name="IDGuest" />
+      </Principal>
+      <Dependent Role="Check">
+        <PropertyRef Name="IDGuest" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StuffList_Check">
+    <End Role="Check" Type="Self.Check" Multiplicity="1" />
+    <End Role="StuffList" Type="Self.StuffList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Check">
+        <PropertyRef Name="IDCheck" />
+      </Principal>
+      <Dependent Role="StuffList">
+        <PropertyRef Name="IDCheck" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Emploee_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="Emploee" Type="Self.Emploee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="IDGender" />
+      </Principal>
+      <Dependent Role="Emploee">
+        <PropertyRef Name="IDGender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Emploee_Post">
+    <End Role="Post" Type="Self.Post" Multiplicity="1" />
+    <End Role="Emploee" Type="Self.Emploee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="IdPost" />
+      </Principal>
+      <Dependent Role="Emploee">
+        <PropertyRef Name="IDPost" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guest_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="Guest" Type="Self.Guest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="IDGender" />
+      </Principal>
+      <Dependent Role="Guest">
+        <PropertyRef Name="IDGender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guest_LevelDiscount">
+    <End Role="LevelDiscount" Type="Self.LevelDiscount" Multiplicity="0..1" />
+    <End Role="Guest" Type="Self.Guest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LevelDiscount">
+        <PropertyRef Name="IDLevelDiscount" />
+      </Principal>
+      <Dependent Role="Guest">
+        <PropertyRef Name="IDLevelDiscount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StuffList_Stuff">
+    <End Role="Stuff" Type="Self.Stuff" Multiplicity="1" />
+    <End Role="StuffList" Type="Self.StuffList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stuff">
+        <PropertyRef Name="IDStuff" />
+      </Principal>
+      <Dependent Role="StuffList">
+        <PropertyRef Name="IDStuff" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supply_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+    <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="IDSupplier" />
+      </Principal>
+      <Dependent Role="Supply">
+        <PropertyRef Name="IDSupplier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmloeeWorkShift">
+    <End Role="Emploee" Type="Self.Emploee" Multiplicity="*" />
+    <End Role="WorkShift" Type="Self.WorkShift" Multiplicity="*" />
+  </Association>
+  <Association Name="StuffSupply">
+    <End Role="Stuff" Type="Self.Stuff" Multiplicity="*" />
+    <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="KoffeeHouseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="Check" EntityType="Self.Check" />
+    <EntitySet Name="Emploee" EntityType="Self.Emploee" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" />
+    <EntitySet Name="Guest" EntityType="Self.Guest" />
+    <EntitySet Name="LevelDiscount" EntityType="Self.LevelDiscount" />
+    <EntitySet Name="Post" EntityType="Self.Post" />
+    <EntitySet Name="Stuff" EntityType="Self.Stuff" />
+    <EntitySet Name="StuffList" EntityType="Self.StuffList" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" />
+    <EntitySet Name="Supply" EntityType="Self.Supply" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="WorkShift" EntityType="Self.WorkShift" />
+    <EntitySet Name="VW_LevelDiscountGuest" EntityType="Self.VW_LevelDiscountGuest" />
+    <EntitySet Name="VW_TheBiggestGuest" EntityType="Self.VW_TheBiggestGuest" />
+    <EntitySet Name="VW_WorkShiftEmploee" EntityType="Self.VW_WorkShiftEmploee" />
+    <AssociationSet Name="FK_Stuff_Category" Association="Self.FK_Stuff_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Stuff" EntitySet="Stuff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Check_Emploee" Association="Self.FK_Check_Emploee">
+      <End Role="Emploee" EntitySet="Emploee" />
+      <End Role="Check" EntitySet="Check" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Check_Guest" Association="Self.FK_Check_Guest">
+      <End Role="Guest" EntitySet="Guest" />
+      <End Role="Check" EntitySet="Check" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StuffList_Check" Association="Self.FK_StuffList_Check">
+      <End Role="Check" EntitySet="Check" />
+      <End Role="StuffList" EntitySet="StuffList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Emploee_Gender" Association="Self.FK_Emploee_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Emploee" EntitySet="Emploee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Emploee_Post" Association="Self.FK_Emploee_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Emploee" EntitySet="Emploee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guest_Gender" Association="Self.FK_Guest_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Guest" EntitySet="Guest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guest_LevelDiscount" Association="Self.FK_Guest_LevelDiscount">
+      <End Role="LevelDiscount" EntitySet="LevelDiscount" />
+      <End Role="Guest" EntitySet="Guest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StuffList_Stuff" Association="Self.FK_StuffList_Stuff">
+      <End Role="Stuff" EntitySet="Stuff" />
+      <End Role="StuffList" EntitySet="StuffList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supply_Supplier" Association="Self.FK_Supply_Supplier">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="Supply" EntitySet="Supply" />
+    </AssociationSet>
+    <AssociationSet Name="EmloeeWorkShift" Association="Self.EmloeeWorkShift">
+      <End Role="Emploee" EntitySet="Emploee" />
+      <End Role="WorkShift" EntitySet="WorkShift" />
+    </AssociationSet>
+    <AssociationSet Name="StuffSupply" Association="Self.StuffSupply">
+      <End Role="Stuff" EntitySet="Stuff" />
+      <End Role="Supply" EntitySet="Supply" />
+    </AssociationSet>
+    <FunctionImport Name="UDF_GetLevelGuest" IsComposable="true" ReturnType="Collection(KoffeeHouseModel.UDF_GetLevelGuest_Result)">
+      <Parameter Name="Lvl" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UDF_SupplyDate" IsComposable="true" ReturnType="Collection(KoffeeHouseModel.UDF_SupplyDate_Result)">
+      <Parameter Name="sDate" Mode="In" Type="DateTime" />
+      <Parameter Name="eDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="PR_getStuffExpirationDate" ReturnType="Collection(KoffeeHouseModel.PR_getStuffExpirationDate_Result)">
+      <Parameter Name="aTime" Mode="In" Type="Int32" />
+      <Parameter Name="bTime" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PR_MinAVGStuff" ReturnType="Collection(KoffeeHouseModel.PR_MinAVGStuff_Result)" />
+    <FunctionImport Name="PR_SetLevelDiscount" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(KoffeeHouseModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(KoffeeHouseModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="PR_getStuffExpirationDate_Result">
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Price" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="ExpirationDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="PR_MinAVGStuff_Result">
+    <Property Type="Int32" Name="IDStuff" Nullable="false" />
+    <Property Type="Int32" Name="IDCategory" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Price" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="Count" Nullable="false" />
+    <Property Type="Int32" Name="ExpirationDate" Nullable="true" />
+    <Property Type="Binary" Name="PhotoPath" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

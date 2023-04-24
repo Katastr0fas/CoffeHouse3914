@@ -1,0 +1,41 @@
+﻿<Window x:Class="CoffeHouse3914.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoffeHouse3914"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <Grid Background="CornflowerBlue">
+     
+        <TextBlock
+            x:Name="TbNamePost"
+            Text="1"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top"
+            FontSize="20"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button
+                x:Name="BtnProductList"
+                Content="Список продуктов"
+                Margin="10"
+                Height="30" Click="BtnProductList_Click"
+                />
+
+            <Button
+                x:Name="BtnOrderList"
+                Content="Список заказов"
+                Margin="10"
+                Height="30" Click="BtnOrderList_Click"
+                />
+
+            <Button
+                x:Name="BtnEmployeeList"
+                Content="Список работников"
+                Margin="10"
+                Height="30" Click="BtnEmployeeList_Click"
+                />
+
+        </StackPanel>
+    </Grid>
+</Window>

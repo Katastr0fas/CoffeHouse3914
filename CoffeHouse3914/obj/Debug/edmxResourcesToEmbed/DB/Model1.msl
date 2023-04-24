@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище KoffeeHouseModelContainer" CdmEntityContainer="KoffeeHouseEntities">
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Check">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.Check">
+        <MappingFragment StoreEntitySet="Check">
+          <ScalarProperty Name="IDCheck" ColumnName="IDCheck" />
+          <ScalarProperty Name="IDEmployee" ColumnName="IDEmployee" />
+          <ScalarProperty Name="IDGuest" ColumnName="IDGuest" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emploee">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.Emploee">
+        <MappingFragment StoreEntitySet="Emploee">
+          <ScalarProperty Name="IDEmploee" ColumnName="IDEmploee" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IDGender" ColumnName="IDGender" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PersonalCode" ColumnName="PersonalCode" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IDPost" ColumnName="IDPost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gender">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="IDGender" ColumnName="IDGender" />
+          <ScalarProperty Name="Gender1" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Guest">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.Guest">
+        <MappingFragment StoreEntitySet="Guest">
+          <ScalarProperty Name="IDGuest" ColumnName="IDGuest" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IDGender" ColumnName="IDGender" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DiscountCode" ColumnName="DiscountCode" />
+          <ScalarProperty Name="IDLevelDiscount" ColumnName="IDLevelDiscount" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LevelDiscount">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.LevelDiscount">
+        <MappingFragment StoreEntitySet="LevelDiscount">
+          <ScalarProperty Name="IDLevelDiscount" ColumnName="IDLevelDiscount" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Post">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.Post">
+        <MappingFragment StoreEntitySet="Post">
+          <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stuff">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.Stuff">
+        <MappingFragment StoreEntitySet="Stuff">
+          <ScalarProperty Name="IDStuff" ColumnName="IDStuff" />
+          <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StuffList">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.StuffList">
+        <MappingFragment StoreEntitySet="StuffList">
+          <ScalarProperty Name="IDStuffList" ColumnName="IDStuffList" />
+          <ScalarProperty Name="IDStuff" ColumnName="IDStuff" />
+          <ScalarProperty Name="IDCheck" ColumnName="IDCheck" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supplier">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.Supplier">
+        <MappingFragment StoreEntitySet="Supplier">
+          <ScalarProperty Name="IDSupplier" ColumnName="IDSupplier" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supply">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.Supply">
+        <MappingFragment StoreEntitySet="Supply">
+          <ScalarProperty Name="IDSupply" ColumnName="IDSupply" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="IDSupplier" ColumnName="IDSupplier" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkShift">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.WorkShift">
+        <MappingFragment StoreEntitySet="WorkShift">
+          <ScalarProperty Name="WorkShift1" ColumnName="WorkShift" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_LevelDiscountGuest">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.VW_LevelDiscountGuest">
+        <MappingFragment StoreEntitySet="VW_LevelDiscountGuest">
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+          <ScalarProperty Name="Пол" ColumnName="Пол" />
+          <ScalarProperty Name="Дата_рождения" ColumnName="Дата рождения" />
+          <ScalarProperty Name="Почта" ColumnName="Почта" />
+          <ScalarProperty Name="Скидочный_код" ColumnName="Скидочный код" />
+          <ScalarProperty Name="Баланс_балов" ColumnName="Баланс балов" />
+          <ScalarProperty Name="Уровень_скидки" ColumnName="Уровень скидки" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_TheBiggestGuest">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.VW_TheBiggestGuest">
+        <MappingFragment StoreEntitySet="VW_TheBiggestGuest">
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+          <ScalarProperty Name="Уровень_скидки" ColumnName="Уровень скидки" />
+          <ScalarProperty Name="Доступные_баллы" ColumnName="Доступные баллы" />
+          <ScalarProperty Name="Количество_заказов" ColumnName="Количество заказов" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_WorkShiftEmploee">
+      <EntityTypeMapping TypeName="KoffeeHouseModel.VW_WorkShiftEmploee">
+        <MappingFragment StoreEntitySet="VW_WorkShiftEmploee">
+          <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+          <ScalarProperty Name="Персональный_код" ColumnName="Персональный код" />
+          <ScalarProperty Name="Начало_смены" ColumnName="Начало смены" />
+          <ScalarProperty Name="Конец_смены" ColumnName="Конец смены" />
+          <ScalarProperty Name="Количество_часов" ColumnName="Количество часов" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="EmloeeWorkShift" TypeName="KoffeeHouseModel.EmloeeWorkShift" StoreEntitySet="EmloeeWorkShift">
+      <EndProperty Name="Emploee">
+        <ScalarProperty Name="IDEmploee" ColumnName="IDEmploee" />
+      </EndProperty>
+      <EndProperty Name="WorkShift">
+        <ScalarProperty Name="WorkShift1" ColumnName="IDWorkShift" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StuffSupply" TypeName="KoffeeHouseModel.StuffSupply" StoreEntitySet="StuffSupply">
+      <EndProperty Name="Stuff">
+        <ScalarProperty Name="IDStuff" ColumnName="IDStuff" />
+      </EndProperty>
+      <EndProperty Name="Supply">
+        <ScalarProperty Name="IDSupply" ColumnName="IDSupply" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionName="Хранилище KoffeeHouseModel.UDF_GetLevelGuest" FunctionImportName="UDF_GetLevelGuest">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KoffeeHouseModel.UDF_GetLevelGuest_Result">
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Номер_телефона" ColumnName="Номер телефона" />
+          <ScalarProperty Name="Пол" ColumnName="Пол" />
+          <ScalarProperty Name="Дата_рождения" ColumnName="Дата рождения" />
+          <ScalarProperty Name="Электронная_почта" ColumnName="Электронная почта" />
+          <ScalarProperty Name="Уровень_скидки" ColumnName="Уровень скидки" />
+          <ScalarProperty Name="Достуаные_баллы" ColumnName="Достуаные баллы" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="Хранилище KoffeeHouseModel.UDF_SupplyDate" FunctionImportName="UDF_SupplyDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KoffeeHouseModel.UDF_SupplyDate_Result">
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Цена" ColumnName="Цена" />
+          <ScalarProperty Name="Категория" ColumnName="Категория" />
+          <ScalarProperty Name="Срок_годности" ColumnName="Срок годности" />
+          <ScalarProperty Name="Дата_поставки" ColumnName="Дата поставки" />
+          <ScalarProperty Name="Количество_товара_в_поставке" ColumnName="Количество товара в поставке" />
+          <ScalarProperty Name="Поставщик" ColumnName="Поставщик" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_getStuffExpirationDate" FunctionName="Хранилище KoffeeHouseModel.PR_getStuffExpirationDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KoffeeHouseModel.PR_getStuffExpirationDate_Result">
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_MinAVGStuff" FunctionName="Хранилище KoffeeHouseModel.PR_MinAVGStuff">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KoffeeHouseModel.PR_MinAVGStuff_Result">
+          <ScalarProperty Name="IDStuff" ColumnName="IDStuff" />
+          <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_SetLevelDiscount" FunctionName="Хранилище KoffeeHouseModel.PR_SetLevelDiscount" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище KoffeeHouseModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище KoffeeHouseModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище KoffeeHouseModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище KoffeeHouseModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KoffeeHouseModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище KoffeeHouseModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KoffeeHouseModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище KoffeeHouseModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище KoffeeHouseModel.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>
